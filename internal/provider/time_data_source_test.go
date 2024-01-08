@@ -14,11 +14,12 @@ func TestTimeDataSource(t *testing.T) {
 				Config: `
 				data "timeconv_time" "example" {
 					input = "2023-02-15T16:35:00+09:00"
+					output_location = "America/Los_Angeles"
 				}
 				`,
 				Check: resource.ComposeAggregateTestCheckFunc(
-					resource.TestCheckResourceAttr("data.timeconv_time.example", "output", "2023-02-15T16:35:00+09:00"),
-					resource.TestCheckResourceAttr("data.timeconv_time.example", "cron", "35 16 15 2 ? 2023"),
+					resource.TestCheckResourceAttr("data.timeconv_time.example", "output", "2023-02-14T23:35:00-08:00"),
+					resource.TestCheckResourceAttr("data.timeconv_time.example", "cron", "35 23 14 2 ? 2023"),
 					resource.TestCheckResourceAttr("data.timeconv_time.example", "unix", "1676446500"),
 				),
 			},
