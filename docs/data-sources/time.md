@@ -25,6 +25,7 @@ description: |-
 
 ### Read-Only
 
-- `cron` (String) Cron expression in localtime
+- `aws_cron` (String) AWS cron expression in output location.
+- `cron` (String, Deprecated) AWS cron expression in output location.
 - `output` (String) Output time string
 - `unix` (Number) Unix time in seconds

@@ -56,9 +56,14 @@ func (d *timeDataSource) Schema(_ context.Context, req datasource.SchemaRequest,
 				Optional:    true,
 				Description: "Output timezone location. Default is the system localtime.",
 			},
-			"cron": schema.StringAttribute{
+			"aws_cron": schema.StringAttribute{
 				Computed:    true,
-				Description: "Cron expression in localtime",
+				Description: "AWS cron expression in output location.",
+			},
+			"cron": schema.StringAttribute{
+				Computed:           true,
+				DeprecationMessage: "You should use aws_cron instead of this",
+				Description:        "AWS cron expression in output location.",
 			},
 			"unix": schema.Int64Attribute{
 				Computed:    true,
@@ -138,6 +143,7 @@ func (d *timeDataSource) Read(ctx context.Context, req datasource.ReadRequest, r
 		Output:         types.StringValue(out.Format(outputFormat)),
 		OutputFormat:   types.StringValue(outputFormat),
 		OutputLocation: types.StringValue(outputLocation),
+		AwsCron:        types.StringValue(cron(out)),
 		Cron:           types.StringValue(cron(out)),
 		Unix:           types.Int64Value(out.Unix()),
 	}
@@ -157,6 +163,7 @@ type timeDataSourceModel struct {
 	Output         types.String `tfsdk:"output"`
 	OutputFormat   types.String `tfsdk:"output_format"`
 	OutputLocation types.String `tfsdk:"output_location"`
+	AwsCron        types.String `tfsdk:"aws_cron"`
 	Cron           types.String `tfsdk:"cron"`
 	Unix           types.Int64  `tfsdk:"unix"`
 }

@@ -19,6 +19,7 @@ func TestTimeDataSource(t *testing.T) {
 				`,
 				Check: resource.ComposeAggregateTestCheckFunc(
 					resource.TestCheckResourceAttr("data.timeconv_time.example", "output", "2023-02-14T23:35:00-08:00"),
+					resource.TestCheckResourceAttr("data.timeconv_time.example", "aws_cron", "35 23 14 2 ? 2023"),
 					resource.TestCheckResourceAttr("data.timeconv_time.example", "cron", "35 23 14 2 ? 2023"),
 					resource.TestCheckResourceAttr("data.timeconv_time.example", "unix", "1676446500"),
 				),
@@ -32,6 +33,7 @@ func TestTimeDataSource(t *testing.T) {
 				`,
 				Check: resource.ComposeAggregateTestCheckFunc(
 					resource.TestCheckResourceAttr("data.timeconv_time.example", "output", "2023-02-15T07:35:00Z"),
+					resource.TestCheckResourceAttr("data.timeconv_time.example", "aws_cron", "35 7 15 2 ? 2023"),
 					resource.TestCheckResourceAttr("data.timeconv_time.example", "cron", "35 7 15 2 ? 2023"),
 					resource.TestCheckResourceAttr("data.timeconv_time.example", "unix", "1676446500"),
 				),
@@ -48,6 +50,7 @@ func TestTimeDataSource(t *testing.T) {
 				`,
 				Check: resource.ComposeTestCheckFunc(
 					resource.TestCheckResourceAttr("data.timeconv_time.example", "output", "14 Feb 23 22:36 UTC"),
+					resource.TestCheckResourceAttr("data.timeconv_time.example", "aws_cron", "36 22 14 2 ? 2023"),
 					resource.TestCheckResourceAttr("data.timeconv_time.example", "cron", "36 22 14 2 ? 2023"),
 					resource.TestCheckResourceAttr("data.timeconv_time.example", "unix", "1676414165"),
 				),
