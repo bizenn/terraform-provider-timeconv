@@ -51,7 +51,7 @@ func (f *timezone) Run(ctx context.Context, req function.RunRequest, resp *funct
 
 	// Convert
 	var err error
-	oLoc := time.Local
+	var oLoc *time.Location
 	if oLoc, err = time.LoadLocation(outputLocation); err != nil {
 		resp.Error = function.NewFuncError(
 			fmt.Sprintf("Output location loading error: %s", err),
