@@ -7,13 +7,14 @@ import (
 	"context"
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
+	"github.com/hashicorp/terraform-plugin-framework/function"
 	"github.com/hashicorp/terraform-plugin-framework/provider"
 	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 )
 
 // Ensure ScaffoldingProvider satisfies various provider interfaces.
-var _ provider.Provider = &TimeconvProvider{}
+var _ provider.ProviderWithFunctions = &TimeconvProvider{}
 
 // TimeconvProvider defines the provider implementation.
 type TimeconvProvider struct {
@@ -48,6 +49,12 @@ func (p *TimeconvProvider) Resources(ctx context.Context) []func() resource.Reso
 func (p *TimeconvProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{
 		NewTimeDataSource,
+	}
+}
+
+func (p *TimeconvProvider) Functions(_ context.Context) []func() function.Function {
+	return []func() function.Function{
+		NewTimezoneFunction,
 	}
 }
 
