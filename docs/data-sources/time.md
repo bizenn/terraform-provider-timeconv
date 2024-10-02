@@ -25,6 +25,7 @@ description: |-
 
 ### Read-Only
 
+- `at` (String) at expression ("at(2006-01-02T15:04:05)")
 - `aws_cron` (String) AWS cron expression in output location.
 - `cron` (String, Deprecated) AWS cron expression in output location.
 - `output` (String) Output time string
