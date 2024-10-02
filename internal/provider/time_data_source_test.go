@@ -22,6 +22,7 @@ func TestTimeDataSource(t *testing.T) {
 					resource.TestCheckResourceAttr("data.timeconv_time.example", "aws_cron", "35 23 14 2 ? 2023"),
 					resource.TestCheckResourceAttr("data.timeconv_time.example", "cron", "35 23 14 2 ? 2023"),
 					resource.TestCheckResourceAttr("data.timeconv_time.example", "unix", "1676446500"),
+					resource.TestCheckResourceAttr("data.timeconv_time.example", "at", "at(2023-02-15T07:35:00)"),
 				),
 			},
 			{
@@ -36,6 +37,7 @@ func TestTimeDataSource(t *testing.T) {
 					resource.TestCheckResourceAttr("data.timeconv_time.example", "aws_cron", "35 7 15 2 ? 2023"),
 					resource.TestCheckResourceAttr("data.timeconv_time.example", "cron", "35 7 15 2 ? 2023"),
 					resource.TestCheckResourceAttr("data.timeconv_time.example", "unix", "1676446500"),
+					resource.TestCheckResourceAttr("data.timeconv_time.example", "at", "at(2023-02-15T07:35:00)"),
 				),
 			},
 			{
@@ -53,6 +55,7 @@ func TestTimeDataSource(t *testing.T) {
 					resource.TestCheckResourceAttr("data.timeconv_time.example", "aws_cron", "36 22 14 2 ? 2023"),
 					resource.TestCheckResourceAttr("data.timeconv_time.example", "cron", "36 22 14 2 ? 2023"),
 					resource.TestCheckResourceAttr("data.timeconv_time.example", "unix", "1676414165"),
+					resource.TestCheckResourceAttr("data.timeconv_time.example", "at", "at(2023-02-14T22:36:05)"),
 				),
 			},
 		},

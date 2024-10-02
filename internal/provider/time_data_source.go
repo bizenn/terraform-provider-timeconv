@@ -69,6 +69,10 @@ func (d *timeDataSource) Schema(_ context.Context, req datasource.SchemaRequest,
 				Computed:    true,
 				Description: "Unix time in seconds",
 			},
+			"at": schema.StringAttribute{
+				Computed:    true,
+				Description: "at expression (\"at(2006-01-02T15:04:05)\")",
+			},
 		},
 	}
 }
@@ -146,6 +150,7 @@ func (d *timeDataSource) Read(ctx context.Context, req datasource.ReadRequest, r
 		AwsCron:        types.StringValue(cron(out)),
 		Cron:           types.StringValue(cron(out)),
 		Unix:           types.Int64Value(out.Unix()),
+		At:             types.StringValue(at(out)),
 	}
 	diags = res.State.Set(ctx, state)
 	res.Diagnostics.Append(diags...)
@@ -166,8 +171,13 @@ type timeDataSourceModel struct {
 	AwsCron        types.String `tfsdk:"aws_cron"`
 	Cron           types.String `tfsdk:"cron"`
 	Unix           types.Int64  `tfsdk:"unix"`
+	At             types.String `tfsdk:"at"`
 }
 
 func cron(t time.Time) string {
 	return fmt.Sprintf("%d %d %d %d ? %d", t.Minute(), t.Hour(), t.Day(), t.Month(), t.Year())
+}
+
+func at(t time.Time) string {
+	return t.UTC().Format("at(2006-01-02T15:04:05)")
 }
