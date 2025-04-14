@@ -1,4 +1,5 @@
 // Generate copyright headers
+//go:generate go get github.com/hashicorp/copywrite
 //go:generate go run github.com/hashicorp/copywrite headers -d .. --config ../.copywrite.hcl
 
 // Format Terraform code for use in documentation.
@@ -8,10 +9,7 @@
 
 // Generate documentation.
 //
+//go:generate go get github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs
 //go:generate go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs generate --provider-dir .. -provider-name timeconv
+//go:generate go mod tidy
 package tools
-
-import (
-	_ "github.com/hashicorp/copywrite"
-	_ "github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs"
-)
