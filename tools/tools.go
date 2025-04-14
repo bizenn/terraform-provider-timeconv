@@ -1,5 +1,7 @@
 // Generate copyright headers
+// nolint
 //go:generate go get github.com/hashicorp/copywrite
+// nolint
 //go:generate go run github.com/hashicorp/copywrite headers -d .. --config ../.copywrite.hcl
 
 // Format Terraform code for use in documentation.
