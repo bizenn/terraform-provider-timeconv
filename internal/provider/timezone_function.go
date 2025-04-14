@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"time"
+	_ "time/tzdata" // Load the time zone data
 
 	"github.com/hashicorp/terraform-plugin-framework-timetypes/timetypes"
 	"github.com/hashicorp/terraform-plugin-framework/function"

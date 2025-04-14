@@ -7,6 +7,7 @@ import (
 	"context"
 	"flag"
 	"log"
+	_ "time/tzdata" // Load the time zone data
 
 	"github.com/bizenn/terraform-provider-timeconv/internal/provider"
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
