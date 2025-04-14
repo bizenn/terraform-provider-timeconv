@@ -55,6 +55,7 @@ func (p *TimeconvProvider) DataSources(ctx context.Context) []func() datasource.
 func (p *TimeconvProvider) Functions(_ context.Context) []func() function.Function {
 	return []func() function.Function{
 		NewTimezoneFunction,
+		NewFormatFunction,
 	}
 }
 
