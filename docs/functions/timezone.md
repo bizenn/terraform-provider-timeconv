@@ -10,7 +10,13 @@ description: |-
 
 Converts a given date time string from one timezone to another, returning the result in the specified format
 
+## Example Usage
 
+```terraform
+output "test" {
+  value = provider::timeconv::timezone("2024-08-31T01:23:45+0900", "UTC")
+}
+```
 
 ## Signature
 
