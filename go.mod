@@ -9,12 +9,14 @@ require (
 	github.com/hashicorp/terraform-plugin-framework-timetypes v0.5.0
 	github.com/hashicorp/terraform-plugin-go v0.26.0
 	github.com/hashicorp/terraform-plugin-testing v1.12.0
+	github.com/winebarrel/cronplan v1.10.5
 )
 
 require (
 	dario.cat/mergo v1.0.1 // indirect
 	github.com/ProtonMail/go-crypto v1.2.0 // indirect
 	github.com/agext/levenshtein v1.2.3 // indirect
+	github.com/alecthomas/participle/v2 v2.1.1 // indirect
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
 	github.com/cloudflare/circl v1.6.1 // indirect
 	github.com/fatih/color v1.18.0 // indirect
