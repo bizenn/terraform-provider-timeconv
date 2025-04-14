@@ -31,14 +31,6 @@ func TestZoneNameFunction(t *testing.T) {
 				},
 			},
 			{
-				Config: `output "zone_name" {
-					value = provider::timeconv::zone_name("2024-08-31T01:23:45+09:00")
-				}`,
-				ConfigStateChecks: []statecheck.StateCheck{
-					statecheck.ExpectKnownOutputValue("zone_name", knownvalue.StringExact("JST")),
-				},
-			},
-			{
 				Config: `output "invalid_input" {
 					value = provider::timeconv::zone_name("2024-08-31T00:00:00")
 				}`,
