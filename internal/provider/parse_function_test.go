@@ -27,8 +27,11 @@ func TestParseFunction(t *testing.T) {
 				output "parsed_without_layout" {
 					value = provider::timeconv::parse(null, "2024-08-31T01:23:45+09:00")
 				}
+				output "parse_with_RFC3339" {
+					value = provider::timeconv::parse("2006-01-02T15:04:05Z07:00", "2024-08-31T01:23:45+09:00")
+				}
 				output "parsed_time" {
-					value = provider::timeconv::parse("2006-01-02 15:04:05 MST", "2024-08-31 01:23:45 JST")
+					value = provider::timeconv::parse("2006-01-02 15:04:05 Z0700 MST", "2024-08-31 01:23:45 +0900 JST")
 				}
 				output "parsed_time_with_ANSIC" {
 					value = provider::timeconv::parse("Mon Jan _2 15:04:05 2006", "Wed Aug  7 01:23:45 2024")
@@ -36,6 +39,7 @@ func TestParseFunction(t *testing.T) {
 				`,
 				ConfigStateChecks: []statecheck.StateCheck{
 					statecheck.ExpectKnownOutputValue("parsed_without_layout", knownvalue.StringExact("2024-08-31T01:23:45+09:00")),
+					statecheck.ExpectKnownOutputValue("parse_with_RFC3339", knownvalue.StringExact("2024-08-31T01:23:45+09:00")),
 					statecheck.ExpectKnownOutputValue("parsed_time", knownvalue.StringExact("2024-08-31T01:23:45+09:00")),
 					statecheck.ExpectKnownOutputValue("parsed_time_with_ANSIC", knownvalue.StringExact("2024-08-07T01:23:45Z")),
 				},
