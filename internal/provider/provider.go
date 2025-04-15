@@ -61,6 +61,8 @@ func (p *TimeconvProvider) Functions(_ context.Context) []func() function.Functi
 		NewZoneOffsetFunction,
 		NewAwsCronFunction,
 		NewUnixCronFunction,
+		NewParseFunction,
+		NewParseInLocationFunction,
 	}
 }
 
