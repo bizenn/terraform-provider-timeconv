@@ -3,12 +3,12 @@
 page_title: "aws_cron function - timeconv"
 subcategory: ""
 description: |-
-  Convert to AWS cron expression string(w/ "cron(...)")
+  Convert to AWS cron expression string(w/o "cron(...)")
 ---
 
 # function: aws_cron
 
-Convert to AWS cron expression string(w/ "cron(...)"). See: https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-scheduled-rule-pattern.html#eb-cron-expressions
+Convert to AWS cron expression string(w/o "cron(...)"). See: https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-scheduled-rule-pattern.html#eb-cron-expressions
 
 ## Example Usage
 

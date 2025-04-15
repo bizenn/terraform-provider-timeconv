@@ -27,7 +27,7 @@ func TestAwsCronFunction(t *testing.T) {
 					value = provider::timeconv::aws_cron("0 12 * * ? *")
 				}`,
 				ConfigStateChecks: []statecheck.StateCheck{
-					statecheck.ExpectKnownOutputValue("aws_cron", knownvalue.StringExact("cron(0 12 * * ? *)")),
+					statecheck.ExpectKnownOutputValue("aws_cron", knownvalue.StringExact("0 12 * * ? *")),
 				},
 			},
 			{
@@ -35,7 +35,7 @@ func TestAwsCronFunction(t *testing.T) {
 					value = provider::timeconv::aws_cron("0 * ? * FRI *")
 				}`,
 				ConfigStateChecks: []statecheck.StateCheck{
-					statecheck.ExpectKnownOutputValue("aws_cron", knownvalue.StringExact("cron(0 * ? * FRI *)")),
+					statecheck.ExpectKnownOutputValue("aws_cron", knownvalue.StringExact("0 * ? * FRI *")),
 				},
 			},
 			{
@@ -62,7 +62,7 @@ func TestUnixCronFunction(t *testing.T) {
 					value = provider::timeconv::unix_cron("0 12 * * ? *")
 				}`,
 				ConfigStateChecks: []statecheck.StateCheck{
-					statecheck.ExpectKnownOutputValue("unix_cron", knownvalue.StringExact("cron(0 12 * * *)")),
+					statecheck.ExpectKnownOutputValue("unix_cron", knownvalue.StringExact("0 12 * * *")),
 				},
 			},
 			{
@@ -70,7 +70,7 @@ func TestUnixCronFunction(t *testing.T) {
 					value = provider::timeconv::unix_cron("0 * ? * FRI *")
 				}`,
 				ConfigStateChecks: []statecheck.StateCheck{
-					statecheck.ExpectKnownOutputValue("unix_cron", knownvalue.StringExact("cron(0 * * * FRI)")),
+					statecheck.ExpectKnownOutputValue("unix_cron", knownvalue.StringExact("0 * * * FRI")),
 				},
 			},
 			{

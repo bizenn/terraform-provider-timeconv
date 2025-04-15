@@ -5,7 +5,6 @@ package provider
 
 import (
 	"context"
-	"fmt"
 	"strings"
 
 	"github.com/hashicorp/terraform-plugin-framework/function"
@@ -17,8 +16,8 @@ type awsCron struct{}
 // Definition implements function.Function.
 func (a *awsCron) Definition(_ context.Context, _ function.DefinitionRequest, resp *function.DefinitionResponse) {
 	resp.Definition = function.Definition{
-		Summary:     "Convert to AWS cron expression string(w/ \"cron(...)\")",
-		Description: "Convert to AWS cron expression string(w/ \"cron(...)\"). See: https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-scheduled-rule-pattern.html#eb-cron-expressions",
+		Summary:     "Convert to AWS cron expression string(w/o \"cron(...)\")",
+		Description: "Convert to AWS cron expression string(w/o \"cron(...)\"). See: https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-scheduled-rule-pattern.html#eb-cron-expressions",
 
 		Parameters: []function.Parameter{
 			function.StringParameter{
@@ -39,7 +38,6 @@ func (a *awsCron) Metadata(_ context.Context, _ function.MetadataRequest, resp *
 // Run implements function.Function.
 func (a *awsCron) Run(ctx context.Context, req function.RunRequest, resp *function.RunResponse) {
 	var input string
-	var output string
 
 	resp.Error = function.ConcatFuncErrors(resp.Error, req.Arguments.Get(ctx, &input))
 
@@ -48,8 +46,7 @@ func (a *awsCron) Run(ctx context.Context, req function.RunRequest, resp *functi
 		resp.Error = function.ConcatFuncErrors(resp.Error, function.NewFuncError(err.Error()))
 		return
 	}
-	output = fmt.Sprintf("cron(%s)", expr.String())
-	resp.Error = function.ConcatFuncErrors(resp.Error, resp.Result.Set(ctx, output))
+	resp.Error = function.ConcatFuncErrors(resp.Error, resp.Result.Set(ctx, expr.String()))
 }
 
 var _ function.Function = (*awsCron)(nil)
@@ -104,7 +101,7 @@ func (u *unixCron) Run(ctx context.Context, req function.RunRequest, resp *funct
 	if expr.DayOfWeek.String() != "?" {
 		fs[4] = expr.DayOfWeek.String()
 	}
-	output = fmt.Sprintf("cron(%s)", strings.Join(fs, " "))
+	output = strings.Join(fs, " ")
 	resp.Error = function.ConcatFuncErrors(resp.Error, resp.Result.Set(ctx, output))
 }
 
