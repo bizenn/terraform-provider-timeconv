@@ -1,8 +1,8 @@
 module github.com/bizenn/terraform-provider-timeconv
 
-go 1.23.0
+go 1.23.7
 
-toolchain go1.24.1
+toolchain go1.24.5
 
 require (
 	github.com/hashicorp/terraform-plugin-framework v1.15.1
@@ -51,7 +51,7 @@ require (
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/mitchellh/reflectwalk v1.0.2 // indirect
 	github.com/oklog/run v1.1.0 // indirect
-	github.com/rogpeppe/go-internal v1.13.1 // indirect
+	github.com/rogpeppe/go-internal v1.14.1 // indirect
 	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
