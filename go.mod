@@ -1,8 +1,6 @@
 module github.com/bizenn/terraform-provider-timeconv
 
-go 1.24.0
-
-toolchain go1.24.5
+go 1.25
 
 require (
 	github.com/hashicorp/terraform-plugin-framework v1.16.0
