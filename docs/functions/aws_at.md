@@ -13,7 +13,7 @@ Convert to AWS at expression string in input time's timezone.  See: https://docs
 ## Example Usage
 
 ```terraform
-# Copyright (c) Tatsuya BIZENN <bizenn@gmail.com>
+# Copyright Tatsuya BIZENN <bizenn@gmail.com> 2024, 0
 # SPDX-License-Identifier: Apache-2.0
 
 output "sample" {

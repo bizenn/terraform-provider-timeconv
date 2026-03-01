@@ -13,7 +13,7 @@ Format a time string using the specified format(golang time package style).
 ## Example Usage
 
 ```terraform
-# Copyright (c) Tatsuya BIZENN <bizenn@gmail.com>
+# Copyright Tatsuya BIZENN <bizenn@gmail.com> 2024, 0
 # SPDX-License-Identifier: Apache-2.0
 
 output "sample" {
